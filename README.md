@@ -3,6 +3,10 @@ This is project for devhacks #1, held 1.5. - 4.5.2020. Project was inspired by s
 people who were trying to find partner for hackaton. Project should be useful for future 
 devhacks, and why not for other hackatons also.
 
+Public demo of this project can be found here: <https://4sugy7.deta.dev/>
+
+***
+
 ## Project idea
 Simply said, to create service where people who don't have coding partner / team for a hackaton,
 they could either browse entries from others in similar situation, or submit their own entry to database.
