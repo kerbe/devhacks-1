@@ -1,0 +1,30 @@
+extends views_layout
+
+block content
+    - const dateOptions = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    - const dateInfo = new Date(parseInt(entry.data.added))
+    
+    .row
+        h4(class='justify-content-between align-items-center mb-3') #{entry.data.name}
+    .row
+        ul(class='list-group mb-3')
+            li(class='list-group-item justify-content-between lh-condensed')
+                h6(class='my-0') Entry date
+                small(class='text-muted') #{dateInfo.toLocaleDateString('fi-FI', dateOptions)}
+            li(class='list-group-item justify-content-between lh-condensed')
+                h6(class='my-0') Timezone
+                small(class='text-muted') #{entry.data.timezone}
+            li(class='list-group-item justify-content-between lh-condensed')
+                h6(class='my-0') Languages
+                small(class='text-muted') #{entry.data.languages}
+            li(class='list-group-item justify-content-between lh-condensed')
+                h6(class='my-0') Skills
+                small(class='text-muted') #{entry.data.skills}
+            li(class='list-group-item justify-content-between lh-condensed')
+                h6(class='my-0') Information
+                small(class='text-muted') #{entry.data.info}
+            li(class='list-group-item justify-content-between lh-condensed')
+                h6(class='my-0') Contact information
+                small(class='text-muted') #{entry.data.contact}
+    .row
+        a(href='/browse', class='btn btn-primary', role='button') Return to list

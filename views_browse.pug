@@ -1,0 +1,30 @@
+extends views_layout
+
+block content
+    if uniqID
+        #notification
+        h2 New entry added!
+        p Your information has been saved.
+        p
+            | Your unique ID is "#{uniqID}". Keep it save, as you need it if 
+            | you want to modify or delete your entry.
+
+    p Here you can find all entries. If you don't find suitable partner, consider adding your own entry into list!
+    table(class='table table-striped')
+        thead(class='thead-dark')
+            tr
+                th(scope='col') Added
+                th(scope='col') Name
+                th(scope='col') Info
+        tbody
+            each entry in entries
+                tr
+                    - const dateOptions = { year: 'numeric', month: 'numeric', day: 'numeric' };
+                    - const dateInfo = new Date(parseInt(entry.data.added))
+                    th(scope='row') #{dateInfo.toLocaleDateString('fi-FI', dateOptions)}
+                    td #{entry.data.name}
+                    td
+                        a(href='/browse/' + entry.key) Read more
+        tfoot
+            tr
+                th(colspan='3')

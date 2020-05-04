@@ -1,0 +1,17 @@
+extends views_layout
+
+block content
+    if uniqID
+        #notification
+        h2 Deletion done!
+        p Your information has been deleted.
+        p Your unique ID "#{uniqID}" has been wiped. You can create new submission if desired.
+
+    h3 Delete your entry
+    form(action='/delete' method='post')
+        label(for='uniqID') Your uniqID
+        input(id='uniqID', name='uniqID' class='form-control')
+        br
+        br
+        button(type='submit', class='btn btn-danger btn-lg') Delete
+        button(type='reset', class='btn btn-secundary btn-lg') Reset

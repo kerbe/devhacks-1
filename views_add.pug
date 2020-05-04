@@ -1,0 +1,58 @@
+extends views_layout
+
+block content
+    - const timezones = ['UTC-12:00', 'UTC-11:00', 'UTC-10:00', 'UTC-09:30', 'UTC-09:00', 'UTC-08:00', 'UTC-07:00', 'UTC-06:00', 'UTC-05:00', 'UTC-04:00', 'UTC-03:30', 'UTC-03:00', 'UTC-02:00', 'UTC-01:00', 'UTC-00:00', 'UTC+01:00', 'UTC+02:00', 'UTC+03:00', 'UTC+03:30', 'UTC+04:00', 'UTC+04:30', 'UTC+05:00', 'UTC+05:30', 'UTC+05:45', 'UTC+06:00', 'UTC+06:30', 'UTC+07:00', 'UTC+08:00', 'UTC+08:45', 'UTC+09:00', 'UTC+09:30', 'UTC+10:00', 'UTC+10:30', 'UTC+11:00', 'UTC+12:00', 'UTC+12:45', 'UTC+13:00', 'UTC+14:00'];
+    h3 Add your own listing
+    
+    form(action='/add' method='post')
+        .row
+            .mb-3
+                label(for='name') Name
+                input(id='name', name='name', class='form-control')
+            .col-md-3
+                p(class='align-middle') Name, nickname or similar. How you want to be identified in listing.
+        .row
+            .mb-3
+                label(for='skills') Skills
+                textarea(id='skills', name='skills', class='form-control')
+            .col-md-3
+                p Listing of skills you have. Anything you think could be useful.
+        .row
+            .mb-3
+                label(for='timezone') Timezone
+                select(id='timezone', name='timezone', class='custom-select d-block w-100')
+                    each tz in timezones
+                        option(value=tz) #{tz}
+            .col-md-3
+                p Your timezone where you live.
+        .row
+            .mb-3
+                label(for='languages') Working (natural) languages
+                input(id='languages', name='languages', class='form-control')
+            .col-md-3
+                p Natural languages you speak and are comfortable to communicate with teammates.
+        .row
+            .mb-3
+                label(for='info') General Information, interests etc
+                textarea(id='info', name='info', class='form-control')
+            .col-md-3
+                p 
+                    | Free speech. Tell what kind of projects you'd like to do, 
+                    | or what kind of things you wish to learn.
+                    | If you have project ideas, this is also place to tell about that.
+        .row
+            .mb-3
+                label(for='contact') Contact information
+                textarea(id='contact', name='contact', class='form-control')
+            .col-md-3
+                p
+                    | How you can be contacted. Slack name, email, github, linkedin...
+                    | Whichever you feel like most comfortable sharing.
+                    | Remember, everyone are able to see this information!
+                
+        .row
+            .mb-6
+                - const datetime = Date.parse(new Date().toString());
+                input(type='hidden', name='added', value=datetime)
+                button(type='submit', class='btn btn-primary btn-lg') Add
+                button(type='reset', class='btn btn-secundary btn-lg') Reset
